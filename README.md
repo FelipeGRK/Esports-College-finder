@@ -1,1 +1,1 @@
-# Esports-College-fider
+# Esports-College-finder
