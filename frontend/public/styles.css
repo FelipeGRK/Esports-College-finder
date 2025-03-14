@@ -1,0 +1,868 @@
+/* ------------------------------------------
+   YOUR ORIGINAL CSS (unchanged)
+------------------------------------------ */
+
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    padding-top:0 ;
+}
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: rgb(17, 24, 39);
+    color: white;
+  }
+/* Navigation styles */
+nav {
+    margin-left: 40px;  /* Left space */
+    margin-right: 20px; /* Right space */
+    padding: 0.3rem 0;  /* Reduced vertical padding */
+  
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 1rem;       /* Reduced gap if needed */
+      list-style: none;
+    }
+  }
+  
+  nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgb(209, 213, 219);
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 0.3rem 0; /* Optional: reduce vertical padding in links */
+  }
+  
+  nav a:hover {
+    color: rgb(168, 85, 247);
+  }
+  
+  nav svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  /* Animations */
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.75;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+/* Header */
+header {
+    position: sticky; /* ou "fixed" se preferir fixo desde o início */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* garante que o header fique acima de outros elementos */
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+}
+/* LOGO STYLING */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transform: scale(0.75);
+    transform-origin: left;
+  }
+  .logo-icon {
+    position: relative;
+  }
+  
+  .icon-glow {
+    position: absolute;
+    inset: -0.375rem;
+    background-color: rgb(168, 85, 247);
+    border-radius: 0.75rem;
+    filter: blur(4px);
+    opacity: 0.75;
+    animation: pulse 2s infinite;
+  }
+  
+  .icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+  }
+  
+  .gamepad {
+    width: 3rem;
+    height: 3rem;
+    color: rgb(168, 85, 247);
+  }
+  
+  .target {
+    position: absolute;
+    width: 3.5rem;
+    height: 3.5rem;
+    color: rgb(147, 51, 234);
+    opacity: 0.2;
+    animation: ping 2s infinite;
+  }
+  
+  .sword {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    color: rgb(216, 180, 254);
+    opacity: 0.5;
+    transform: rotate(45deg) translateY(-0.25rem);
+  }
+  
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  
+  .gradient-text {
+    font-size: 2.25rem;
+    font-weight: 800;
+    background: linear-gradient(to right, rgb(168, 85, 247), rgb(147, 51, 234));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.025em;
+  }
+  
+  .white-text {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.025em;
+  }
+  .highlight {
+    color: #b388ff;
+    display: block;
+}
+  .subtitle {
+    font-size: 0.875rem;
+    color: rgb(168, 85, 247);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: -0.25rem;
+  }
+
+/* Search Container */
+.search-container {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  border-radius: 9999px; /* full pill shape */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Input Styles */
+.search-container input[type="text"] {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 9999px; /* keeps corners smooth inside container */
+  background: transparent;
+  color: #fff; /* white text for contrast on dark backgrounds */
+  font-size: 1rem;
+  outline: none;
+}
+
+/* Placeholder */
+.search-container input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Focus State (optional subtle change) */
+.search-container input[type="text"]:focus {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Button Styles */
+.search-container button {
+  background: linear-gradient(to right, #5e72e4, #825ee4);
+  border: none;
+  border-radius: 9999px;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+/* Hover Effect */
+.search-container button:hover {
+  background: linear-gradient(to right, #6e82f4, #927ef4);
+}
+
+.swiper-container {
+    position: relative;
+    padding-bottom: 60px; 
+   
+  }
+
+.swiper-button-next, .swiper-button-prev {
+    color: #007bff;
+    position: absolute;
+    bottom: -30px;
+    top: auto;     
+    transform: translateX(-50%);
+    left: 50%;
+}
+.suggestionlist {
+  position: absolute;
+  top: calc(100% + 5px);     /* just below the parent container */
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 9999;             /* ensure it's on top of other elements */
+  padding: 10px;
+}
+
+/* Each card in the suggestion list */
+.suggestion-card {
+  margin-bottom: 10px; /* space between cards */
+  cursor: pointer;     /* indicates clickable */
+}
+
+/* Grid & Carousel Layouts */
+.grid-container, .swiper-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.2rem;
+    padding: 2rem 5%;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#carouselView {
+  margin-top: 20 px; /* increase this value to push the carousel down */
+}
+/* College Cards */
+.college-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    background: rgba(15, 23, 41, 0.95);
+    width: 250px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+    border: 2px solid rgb(168, 85, 247);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+    animation: pulseGlow 2.5s infinite;
+}
+
+.college-card:hover {
+    transform: scale(1.05);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
+}
+
+/* Learn More Button */
+.learn-more {
+    background: #007bff;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.learn-more:hover {
+    background: #0056b3;
+}
+
+/* Logo Container */
+.logo-container {
+    width: 100%;
+    height: 100px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    padding-bottom: 10px;
+}
+
+.logo-container img {
+    max-width: 200%;
+    max-height: 162%;
+    object-fit: contain;
+}
+
+/* Divider Line */
+.divider-line {
+    width: 90%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 10px auto;
+}
+
+/* College Information */
+.college-info {
+    padding-top: 10px;
+}
+
+.college-card h3, .college-card p {
+    position: relative;
+    z-index: 2;
+}
+
+/* Scholarship Badge */
+.scholarship-badge {
+    position: absolute;
+    top: 5px;  
+    right: 5px;    
+    background: #ffc107;
+    color: #0f1729;
+    padding: 0.3rem 0.6rem; 
+    border-radius: 50px;
+    font-size: 0.6rem;       
+    font-weight: 600;
+}
+
+#toggleView {
+    border: 2px solid #8a56ff;   /* Purple border */
+    background-color: #0f1729;    /* Site background color */
+    color: #8a56ff;              /* Purple text */
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+  
+#toggleView:hover {
+    background-color: #8a56ff;   /* On hover, reverse the colors */
+    color: #0f1729;
+}
+
+/* Feature Icons (Top Left) */
+.feature-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+/* WHY CHOOSE COLLEGIATE ESPORTS */
+.why-esports {
+  text-align: center;
+  padding: 4rem 5%;
+  background: #0f1729;
+  color: #fff;
+}
+.why-esports h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.why-esports .subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #b0b0b0;
+}
+.badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.esports-features {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.feature-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.feature-box h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+.feature-box p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #ccc;
+}
+.icon-wrapper {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ffd700;
+}
+.cta-button {
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: #6a0dad;
+  color: #fff;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.cta-button:hover {
+  background: #5a0ba0;
+}
+/* Chat Header */
+.chat-header {
+    background: linear-gradient(90deg, rgb(138, 86, 255), rgb(90, 46, 203));
+    color: #fff;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-weight: 600;
+}
+
+.chat-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.chat-header button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.chat-header button:hover {
+    transform: scale(1.1);
+}
+
+
+/* Chat Input */
+.chat-input {
+    display: flex;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-input input[type="text"] {
+    flex-grow: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    margin-right: 8px;
+}
+
+.chat-input button {
+    background: linear-gradient(90deg, rgb(138, 86, 255), rgb(90, 46, 203));
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.chat-input button:hover {
+    transform: scale(1.1);
+}
+
+/* RESPONSIVE DESIGN ADJUSTMENTS */
+
+/* Small devices (Smartphones up to 480px) */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        padding: 0.8rem;
+    }
+
+    .logo {
+        margin-bottom: 0.8rem;
+        font-size: 1.2rem;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: color 0.3s ease-in-out;
+    }
+    
+    nav ul li a:hover {
+        color: #b67df5;
+    }
+
+    main h1 {
+        font-size: 1.5rem;
+    }
+
+    main p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    .search-container {
+      position: relative;       /* Needed for absolutely positioned children */
+      max-width: 600px;         /* Adjust as needed */
+      margin: 40px auto;        /* Center horizontally */
+      display: flex;            /* Input & button side by side */
+      align-items: center;
+      background: #eee;         /* Example background color */
+      border-radius: 9999px;    /* "pill" shape */
+      padding: 5px 10px;
+    }
+
+    .search-container input {
+      flex: 1;                   /* expand to fill remaining space */
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 8px 10px;
+      font-size: 16px;
+    }
+    .search-container button {
+      background: #3b82f6;       /* example color */
+      color: #fff;
+      border: none;
+      border-radius: 9999px;     /* match the pill shape */
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .grid-container, .swiper-container {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .college-card {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .logo-container img {
+        width: 100%;
+        height: auto;
+    }
+
+    .esports-features {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .feature-box {
+        width: 100%;
+    }
+
+
+    .chat-input {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .chat-input input[type="text"] {
+        font-size: 0.8rem;
+    }
+
+    .swiper-button-next, 
+    .swiper-button-prev {
+        display: none;
+    }
+}
+/* Medium devices (Tablets between 481px and 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    header {
+        padding: 1rem;
+        flex-direction: column;
+    }
+    .header-content {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem 0;
+        gap: 1rem;
+      }
+
+      nav {
+        padding: 0 15px;
+      }
+      nav ul {
+        flex-direction: row; 
+        flex-wrap: wrap;        
+        justify-content: center;
+        gap: 1.5rem;
+      }
+    }
+
+    main h1 {
+        font-size: 1.8rem;
+    }
+
+    main p {
+        font-size: 1rem;
+    }
+
+    .grid-container, .swiper-container {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        padding: 1rem;
+    }
+
+    .college-card {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .logo-container img {
+        width: 90%;
+        height: auto;
+    }
+
+    .esports-features {
+        flex-direction: column;
+    }
+
+    .feature-box {
+        width: 100%;
+    }
+
+    .swiper-button-next, 
+    .swiper-button-prev {
+        display: flex;
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+
+/* Large devices (Laptops and desktops between 769px and 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    header {
+        padding: 1rem 2%;
+    }
+
+    nav {
+        padding: 0 20px;
+      }
+      nav ul {
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+
+    .grid-container, .swiper-container {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        padding: 1.5rem;
+    }
+
+    .college-card {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .esports-features {
+        gap: 1rem;
+    }
+
+    .feature-box {
+        width: 32%;
+    }
+
+    .swiper-button-next, 
+    .swiper-button-prev {
+        display: flex;
+    }
+}
+
+/* Extra-large devices (Desktops above 1024px) */
+@media (min-width: 1025px) {
+    .college-card {
+        width: 250px;
+        height: 320px;
+    }
+    nav {
+        padding: 0 20px;
+      }
+      
+      nav ul {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        list-style: none;
+      }
+    .logo-container img {
+        max-width: 100%;
+        height: auto;
+    }
+    .swiper-button-next, 
+    .swiper-button-prev {
+        display: flex;
+    }
+}
+/* Hero container with background image */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 60vh; /* or 100vh if you want full screen */
+    background: url("../public/photo.png") no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+  }
+  
+  /* Optional: dark overlay for better text contrast */
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 41, 0.5); /* Adjust opacity or color */
+    z-index: 1;
+  }
+  
+  /* Hero content on top of overlay */
+  .hero-content {
+    position: relative;
+    z-index: 2; /* above overlay */
+    padding: 3rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Heading & subheading in hero */
+  .hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #fff; /* or gradient text, etc. */
+    line-height: 1.2;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+  }
+  
+  /* Search container in hero */
+  .hero-content .search-container {
+    display: inline-flex; /* or flex, or block; up to you */
+    position: relative;
+    max-width: 350px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .hero-content .search-container input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 50px 0 0 50px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  .hero-content .search-container input::placeholder {
+    color: #ccc;
+  }
+  
+  .hero-content .search-container input:focus {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .hero-content .search-container button {
+    padding: 0.8rem 1.4rem;
+    border: none;
+    border-radius: 0 50px 50px 0;
+    background: linear-gradient(90deg, #8a56ff, #00c2ff);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .hero-content .search-container button:hover {
+    transform: scale(1.05);
+  }
+  
