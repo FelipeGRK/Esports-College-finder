@@ -1,0 +1,23 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "MySQLServer",
+            "connectionTimeout": 30,
+            "database": "esports",
+            "username": "root",
+            "group": "MySQL"
+        }
+    ],
+    "dataworkspace.excludedProjects": [
+        "esports/esports.sqlproj"
+    ],
+    "liveServer.settings.port": 5501
+}
