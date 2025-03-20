@@ -3,35 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="../public/default.png">
-  <title>Esports College Finder</title>
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="../public/styles.css" />
-
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- SwiperJS for Carousel -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Custom Script -->
-  <script src="../script.js"></script>
+  <title>About Me - Esports Finder</title>
+  <link rel="stylesheet" href="../public/aboutme.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
-  <!-- NAVIGATION HEADER -->
+<body>
   <header>
     <div class="container">
       <div class="header-content">
-        <!-- Logo -->
-        <div class="logo">
+        <!-- Logo (now clickable) -->
+        <a href="../public/index.html" class="logo">
           <div class="logo-icon">
             <div class="icon-glow"></div>
             <div class="icon-container">
-              <svg class="gamepad" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/><rect x="2" y="6" width="20" height="12" rx="2"/></svg>
-              <svg class="target" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-              <svg class="sword" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/></svg>
+              <svg class="gamepad" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <line x1="6" y1="12" x2="10" y2="12"/>
+                <line x1="8" y1="10" x2="8" y2="14"/>
+                <line x1="15" y1="13" x2="15.01" y2="13"/>
+                <line x1="18" y1="11" x2="18.01" y2="11"/>
+                <rect x="2" y="6" width="20" height="12" rx="2"/>
+              </svg>
+              <svg class="target" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+              <svg class="sword" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/>
+                <line x1="13" y1="19" x2="19" y2="13"/>
+                <line x1="16" y1="16" x2="20" y2="20"/>
+                <line x1="19" y1="21" x2="21" y2="19"/>
+              </svg>
             </div>
           </div>
           <div class="logo-text">
@@ -41,47 +50,199 @@
             </div>
             <span class="subtitle">Find Your College Team</span>
           </div>
-        </div>
+        </a>
+       
         <!-- Navigation -->
         <nav>
           <ul>
             <li><a href="../public/index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="/about.html"><i class="fas fa-info-circle"></i> About</a></li>
-            <li><a href="/why.html"><i class="fas fa-trophy"></i> Why Esports</a></li>
+            <li><a href="../public/about.html"><i class="fas fa-info-circle"></i> About Me</a></li>
+            <li><a href="../public/why.html"><i class="fas fa-trophy"></i> Why Esports</a></li>
             <li><a href="../public/colleges.html"><i class="fas fa-university"></i> Colleges</a></li>
+            <li><a href="../public/map.html" class="active"><i class="fas fa-map-marker-alt"></i> Map</a></li>
           </ul>
         </nav>
       </div>
     </div>
   </header>
-  <main>
-    <section class="about-section">
-      <h1>About Me &amp; Esports College Finder</h1>
-      <p>
-        Hello! My name is [Your Name], and I'm the creator of <strong>Esports College Finder</strong>.
-        My passion for esports goes far beyond the game. Esports opened a door for me to study abroad,
-        offering scholarship opportunities that allowed me to pursue my academic dreams as an international student.
-      </p>
-      <p>
-        I know firsthand the challenges international students face when searching for the right college—especially one
-        that values competitive gaming and offers financial support through esports scholarships. Finding the right fit
-        can be overwhelming and time-consuming.
-      </p>
-      <p>
-        That's why I built Esports College Finder. This platform is designed to simplify the college search process
-        for esports enthusiasts. Whether you're interested in specific majors, regional options, or simply exploring
-        colleges with strong esports programs, my goal is to make your search easier and help you find the perfect
-        institution that aligns with both your academic and esports ambitions.
-      </p>
-      <p>
-        Join me in this journey to connect passionate gamers with colleges that support their dreams—just as esports
-        supported mine.
-      </p>
-    </section>
-  </main>
 
-  <footer>
-    <p>&copy; 2025 Esports College Finder. All rights reserved.</p>
-  </footer>
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="card">
+        <!-- Hero Image -->
+        <div class="hero-image">
+          <img src="../public/aboutphotos/euempe.PNG" alt="Esports Arena">
+          <div class="hero-overlay"></div>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="profile-section">
+          <div class="profile-header">
+            <div class="profile-avatar">
+              <img src="../public/aboutphotos/terno.jpg" alt="Felipe">
+            </div>
+            <div class="profile-info">
+              <h1>Felipe Siqueira</h1>
+              <p>Founder, Esports College Finder</p>
+              <div class="contact-info">
+                <a href="mailto:felipesssiqueira@gmail.com" class="gmail-btn">
+                  <i class="fas fa-envelope"></i> Gmail </a>
+                <a href="https://www.linkedin.com/in/felipe-siqueira-0bbb6a169/"  class="linkedin-btn" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- About Content -->
+          <div class="about-content">
+            <div class="section">
+              <h2>About Me</h2>
+              <p class="highlight">
+                Hello! I'm Felipe Siqueira—the creator of Esports College Finder and an aspiring Software Engineer with a passion for technology and gaming.
+              </p>
+              <p>
+                Originally from Brazil, I came to the United States on an esports scholarship to compete in Valorant while pursuing my degree in Information Technology with a minor in Software Engineering. My journey with esports started at 14 years old, and it eventually became the key that opened doors for me to study abroad with scholarship opportunities.
+              </p>
+              <p>
+                As an international student, I understand firsthand the challenges of finding colleges that value competitive gaming and offer financial support. 
+                That's why I created Esports College Finder—a web-based platform designed to help high school graduates discover colleges with esports programs. 
+                The platform provides detailed insights on scholarships, courses, school type, locations, and official school websites, making it easier for students passionate about gaming to find their best-fit institutions.
+              </p>
+              <p>
+                To enhance user experience and improve search functionality, I integrated AI technology using a trained AI-based chatbot. 
+                This AI-powered assistant interacts with users, understanding their preferences and providing personalized recommendations for esports colleges. 
+                The chatbot refines searches dynamically, helping students navigate options efficiently and ensuring they find institutions that align with their academic and gaming goals.
+              </p>
+              <p class="mission">
+                My mission is to bridge the gap between esports and education, giving future students the same opportunities that changed my life.
+                Let's level up your future together! 🎮✨
+            </div>
+            <div class="section esports-gallery">
+              <h2>My Collegiate Esports Journey</h2>
+              <div class="gallery-grid">
+                <div class="gallery-item">
+                  <img src="../public/aboutphotos/brazil.JPG" alt="Esports Photo 1" />
+                </div>
+                <div class="gallery-item">
+                  <img src="../public/aboutphotos/brazil_team.jpg" alt="Esports Photo 2" />
+                </div>
+                <div class="gallery-item">
+                  <img src="../public/aboutphotos/braazil3.jpg" alt="Esports Photo 3" />
+                </div>
+                <div class="gallery-item">
+                  <img src="../public/aboutphotos/fisher1.jpg" alt="Esports Photo 4" />
+                </div>
+              </div>
+            </div>
+            
+            
+            <div class="section">
+              <h2>Education</h2>
+              <div class="education-grid">
+                <div class="education-item">
+                  <div class="school-logo">
+                    <img src="../public/aboutphotos/fisher_college_logo.jpg" alt="Fisher College">
+                  </div>
+                  <div class="education-content">
+                    <h3>Fisher College – Boston, MA</h3>
+                    <p class="subtitle">Bachelor of Science in Information Technology, minor in Software Engineering</p>
+                    <p class="highlight">Dean's list, Fall 2024 (GPA 3.9)</p>
+                    <p>Expected Graduation: May 2026</p>
+                  </div>
+                </div>
+                <div class="education-item">
+                  <div class="school-logo">
+                    <img src="../public/aboutphotos/cumberland_university_logo.jpg" alt="Cumberland University">
+                  </div>
+                  <div class="education-content">
+                    <h3>Cumberland University</h3>
+                    <p class="subtitle">Information Technology</p>
+                    <p>August 2023 - May 2024</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section">
+              <h2>Technical Skills</h2>
+              <div class="skills-grid">
+                <div class="skill-category">
+                  <h3>Programming</h3>
+                  <p>Python, JavaScript, SQL, C#</p>
+                </div>
+                <div class="skill-category">
+                  <h3>Web Development</h3>
+                  <p>HTML, CSS, JavaScript, AJAX</p>
+                </div>
+                <div class="skill-category">
+                  <h3>AI & Automation</h3>
+                  <p>GPT API, Chatbot Development, Prompt Engineering</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="section">
+              <h2>Certifications</h2>
+              <div class="certifications-grid">
+                <div class="cert-item">
+                  <div class="cert-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta">
+                  </div>
+                  <div class="cert-content">
+                    <h3>Meta</h3>
+                    <p>Programming with JavaScript (2025)</p>
+                    <p>HTML and CSS in Depth (2025)</p>
+                  </div>
+                </div>
+                <div class="cert-item">
+                  <div class="cert-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM">
+                  </div>
+                  <div class="cert-content">
+                    <h3>IBM</h3>
+                    <p>Databases and SQL for Data Science with Python (2024)</p>
+                  </div>
+                </div>
+                <div class="cert-item">
+                  <div class="cert-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+                  </div>
+                  <div class="cert-content">
+                    <h3>Google</h3>
+                    <p>Crash Course on Python (2023)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section">
+              <h2>Languages</h2>
+              <div class="languages-list">
+                <span class="language">Portuguese (Native)</span>
+                <span class="language">English (Fluent)</span>
+                <span class="language">Spanish (Intermediate)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chat Button -->
+          <div class="chat-button-container">
+            <button class="chat-button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                <path d="M13 8H7"></path>
+                <path d="M17 12H7"></path>
+              </svg>
+              <span>Chat with our AI Assistant</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+          © 2025 Esports College Finder. All rights reserved.
+        </footer>
+      </div>
+    </main>
+  </div>
 </body>
 </html>

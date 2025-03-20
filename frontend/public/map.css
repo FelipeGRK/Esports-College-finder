@@ -1,0 +1,200 @@
+
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    padding-top:0 ;
+}
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: rgb(17, 24, 39);
+    color: white;
+  }
+/* Navigation styles */
+nav {
+    margin-left: 40px;  /* Left space */
+    margin-right: 20px; /* Right space */
+    padding: 0.3rem 0;  /* Reduced vertical padding */
+  
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 1rem;       /* Reduced gap if needed */
+      list-style: none;
+    }
+  }
+  
+  nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgb(209, 213, 219);
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 0.3rem 0; /* Optional: reduce vertical padding in links */
+  }
+  
+  nav a:hover {
+    color: rgb(168, 85, 247);
+  }
+  
+  nav svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  /* Animations */
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.75;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+/* Header */
+header {
+    position: sticky; /* ou "fixed" se preferir fixo desde o início */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* garante que o header fique acima de outros elementos */
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+}
+/* LOGO STYLING */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transform: scale(0.75);
+    transform-origin: left;
+  }
+  .logo-icon {
+    position: relative;
+  }
+  
+  .icon-glow {
+    position: absolute;
+    inset: -0.375rem;
+    background-color: rgb(168, 85, 247);
+    border-radius: 0.75rem;
+    filter: blur(4px);
+    opacity: 0.75;
+    animation: pulse 2s infinite;
+  }
+  
+  .icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+  }
+  
+  .gamepad {
+    width: 3rem;
+    height: 3rem;
+    color: rgb(168, 85, 247);
+  }
+  
+  .target {
+    position: absolute;
+    width: 3.5rem;
+    height: 3.5rem;
+    color: rgb(147, 51, 234);
+    opacity: 0.2;
+    animation: ping 2s infinite;
+  }
+  
+  .sword {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    color: rgb(216, 180, 254);
+    opacity: 0.5;
+    transform: rotate(45deg) translateY(-0.25rem);
+  }
+  
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  
+  .gradient-text {
+    font-size: 2.25rem;
+    font-weight: 800;
+    background: linear-gradient(to right, rgb(168, 85, 247), rgb(147, 51, 234));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.025em;
+  }
+  
+  .white-text {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.025em;
+  }
+  .highlight {
+    color: #b388ff;
+    display: block;
+}
+  .subtitle {
+    font-size: 0.875rem;
+    color: rgb(168, 85, 247);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: -0.25rem;
+  }
+  #map {
+    width: 100%;
+    height: 80vh; /* override or keep the same */
+  }
+  
+  /* Popup content styling */
+  .popup-content {
+    text-align: center;
+  }
+  
+  .popup-logo {
+    max-width: 80px;
+    max-height: 80px;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    object-fit: contain;
+  }
+  
+  /* Adjust the .leaflet-popup-content a link color if you like */
+  .leaflet-popup-content a {
+    color: #7c3aed;
+    text-decoration: underline;
+  }
+  

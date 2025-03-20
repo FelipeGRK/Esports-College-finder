@@ -61,9 +61,6 @@ app.get("/api/colleges/search", (req, res) => {
   });
 });
 
-// Serve static files from the frontend folder (if desired)
-app.use(express.static(path.join(__dirname, "..", "frontend")));
-
 // Start the server
 app.listen(port, () => {
   console.log(`✅ Server running on port ${port}`);

@@ -14,7 +14,7 @@ function loadColleges() {
       const collegesList = document.getElementById("collegesList");
       const gridContainer = document.getElementById("gridView");
 
-      // Limpa os containers, se existirem
+      // Clear containers if they exist
       if (collegesList) {
         collegesList.innerHTML = "";
       }
@@ -22,13 +22,13 @@ function loadColleges() {
         gridContainer.innerHTML = "";
       }
 
-      // Ordena os dados (verifique se o nome da propriedade está correto)
+      // Sort data (ensure property name is correct)
       data.sort((a, b) => a.colleges.localeCompare(b.colleges));
 
       data.forEach(college => {
         const collegeCard = createCollegeCard(college);
 
-        // Adiciona ao container do carousel (swiper)
+        // Add to carousel container if it exists
         if (collegesList) {
           const slide = document.createElement("div");
           slide.classList.add("swiper-slide");
@@ -36,7 +36,7 @@ function loadColleges() {
           collegesList.appendChild(slide);
         }
 
-        // Adiciona à grid, se existir
+        // Add to grid container if it exists
         if (gridContainer) {
           const gridItem = document.createElement("div");
           gridItem.classList.add("grid-item");
@@ -45,7 +45,7 @@ function loadColleges() {
         }
       });
 
-      // Inicializa o Swiper para o carousel, se existir
+      // Initialize Swiper carousel if container exists
       if (collegesList) {
         new Swiper('.swiper-container', {
           slidesPerView: 3,
@@ -108,18 +108,14 @@ function createCollegeCard(college) {
     </div>
   `;
 }
-// 2. Function to render colleges in the #gridView container
+
 function displayCollegesInGrid(colleges) {
   const gridView = document.getElementById("gridView");
   if (!gridView) return;
 
-  // Clear existing
   gridView.innerHTML = "";
-
-  // Sort if needed
   colleges.sort((a, b) => a.colleges.localeCompare(b.colleges));
 
-  // Create a card for each college
   colleges.forEach(college => {
     const cardHTML = createCollegeCard(college);
     const gridItem = document.createElement("div");
@@ -129,34 +125,27 @@ function displayCollegesInGrid(colleges) {
   });
 }
 
-// 3. Setup the search bar
 function setupSearch() {
   const searchInput = document.getElementById("searchInput");
   const searchBtn = document.getElementById("searchBtn");
 
-  // Real-time filtering as user types
   searchInput.addEventListener("input", () => {
     const query = searchInput.value.toLowerCase().trim();
     filterAndDisplay(query);
   });
 
-  // Or filter on button click
   searchBtn.addEventListener("click", () => {
     const query = searchInput.value.toLowerCase().trim();
     filterAndDisplay(query);
   });
 }
 
-// 4. Filter colleges by query and re-display
 function filterAndDisplay(query) {
   if (!query) {
-    // Show all if empty
     displayCollegesInGrid(allColleges);
     return;
   }
-  // Filter by college name, region, or esports (adjust fields as needed)
   const filtered = allColleges.filter(college => {
-    // You can add more conditions here (like location, esports_name, etc.)
     return (
       college.colleges.toLowerCase().includes(query) ||
       (college.location && college.location.toLowerCase().includes(query)) ||
@@ -164,6 +153,4 @@ function filterAndDisplay(query) {
     );
   });
   displayCollegesInGrid(filtered);
-}
-
-
+};

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="../public/default.png">
+  <title>Esports College Finder - Map</title>
+
+  <!-- Main Site Styles (Optional) -->
+  <link rel="stylesheet" href="../public/styles.css" />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- Custom Map Styles -->
+  <link rel="stylesheet" href="../public/map.css" />
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Custom Script (for your site, e.g., script.js) -->
+  <script src="../script.js" defer></script>
+
+  <!-- Map-specific script -->
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+      // 1. Initialize the map centered on the continental US
+      const map = L.map("map", {
+        minZoom: 3,
+        maxZoom: 19
+      }).setView([39.50, -98.35], 4);
+
+      // 2. Optionally restrict the map to the US bounding box
+      const southWest = L.latLng(24.396308, -125.0011);
+      const northEast = L.latLng(49.384358, -66.93457);
+      const bounds = L.latLngBounds(southWest, northEast);
+      map.setMaxBounds(bounds);
+      map.on("drag", () => {
+        map.panInsideBounds(bounds, { animate: false });
+      });
+
+      // 3. Add an OpenStreetMap tile layer
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+      }).addTo(map);
+
+      // 4. Fetch colleges from your local server
+      fetch("http://localhost:3000/api/colleges")
+        .then(response => response.json())
+        .then(data => {
+          data.forEach(college => {
+            // Ensure lat & lng exist
+            if (college.lat && college.lng) {
+              
+              // 4A. Build an icon for each college pin
+              // If your DB has a direct field for the logo URL, use that:
+              //   const iconUrl = college.logo_url;
+              // Or build from the college name as in createCollegeCard():
+              let sanitizedCollegeName = college.colleges.toLowerCase()
+                .replace(/[^a-z0-9_\s]/g, "")
+                .trim()
+                .replace(/\s+/g, "_");
+              const iconUrl = `./logos/${sanitizedCollegeName}.png`; // Example local file
+
+              const collegeIcon = L.icon({
+                iconUrl: iconUrl,
+                iconSize: [40, 40],       // pin size
+                iconAnchor: [20, 40],     // anchor so pin tip is at correct lat/lng
+                popupAnchor: [0, -40]
+              });
+
+              // 4B. Create marker
+              const marker = L.marker([college.lat, college.lng], {
+                icon: collegeIcon
+              }).addTo(map);
+
+              // 4C. Bind popup
+              marker.bindPopup(`
+                <div class="popup-content">
+                  <img src="${iconUrl}" alt="${college.colleges} Logo" class="popup-logo" />
+                  <strong>${college.colleges}</strong><br>
+                  ${college.location}<br>
+                  <a href="${college.website}" target="_blank" rel="noopener noreferrer">
+                    Visit Website
+                  </a>
+                </div>
+              `);
+            }
+          });
+        })
+        .catch(error => console.error("Error fetching colleges for map:", error));
+    });
+  </script>
+</head>
+<body>
+  <!-- NAVIGATION HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <!-- Clickable Logo -->
+        <a href="../public/index.html" class="logo">
+          <div class="logo-icon">
+            <div class="icon-glow"></div>
+            <div class="icon-container">
+              <svg class="gamepad" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <line x1="6" y1="12" x2="10" y2="12"/>
+                <line x1="8" y1="10" x2="8" y2="14"/>
+                <line x1="15" y1="13" x2="15.01" y2="13"/>
+                <line x1="18" y1="11" x2="18.01" y2="11"/>
+                <rect x="2" y="6" width="20" height="12" rx="2"/>
+              </svg>
+              <svg class="target" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+              <svg class="sword" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/>
+                <line x1="13" y1="19" x2="19" y2="13"/>
+                <line x1="16" y1="16" x2="20" y2="20"/>
+                <line x1="19" y1="21" x2="21" y2="19"/>
+              </svg>
+            </div>
+          </div>
+          <div class="logo-text">
+            <div class="title">
+              <span class="gradient-text">Esports</span>
+              <span class="white-text">Finder</span>
+            </div>
+            <span class="subtitle">Find Your College Team</span>
+          </div>
+        </a>
+        <!-- Navigation -->
+        <nav>
+          <ul>
+            <li><a href="../public/index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="../public/about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="../public/why.html"><i class="fas fa-trophy"></i> Why Esports</a></li>
+            <li><a href="../public/colleges.html"><i class="fas fa-university"></i> Colleges</a></li>
+            <li><a href="../public/map.html" class="active"><i class="fas fa-map-marker-alt"></i> Map</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT: Map -->
+  <main>
+    <h1 style="text-align:center; margin: 1rem 0; color: #fff;">US College Locations</h1>
+    <div id="map"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Esports College Finder. All rights reserved.</p>
+  </footer>
+
+  <!-- Chat widget script remains unchanged -->
+  <script type="text/javascript">
+    (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        if (!document.getElementById('root')) {
+          var root = d.createElement('div');
+          root.id = 'root';
+          d.body.appendChild(root);
+        }
+        if (window.myChatWidget && typeof window.myChatWidget.load === 'function') {
+          window.myChatWidget.load({
+            id: '73909685-288a-4cdd-a413-a5906fa94d84'
+          });
+        }
+      };
+      v.src = "https://agentivehub.com/production.bundle.min.js";
+      v.type = "text/javascript";
+      s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
+</body>
+</html>
