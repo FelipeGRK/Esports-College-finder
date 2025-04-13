@@ -6,6 +6,7 @@ import path from 'path';
 import mysql from 'mysql2';
 import { fileURLToPath } from 'url';
 
+
 // For ES modules, __dirname is not defined. So, we create it:
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,7 +33,11 @@ db.connect((err) => {
     return;
   }
   console.log("✅ Connected to MySQL Database");
+
 });
+
+
+// ─── API ROUTES ───
 
 // Route to get all colleges from the database
 app.get("/api/colleges", (req, res) => {
@@ -52,7 +57,8 @@ app.get("/api/colleges/search", (req, res) => {
   if (!query) {
     return res.json([]);
   }
-  db.query("SELECT * FROM colleges WHERE colleges LIKE ? LIMIT 10", [query + '%'], (err, results) => {
+  // Note: Adjust this query if your field is actually 'esports_name'
+  db.query("SELECT * FROM colleges WHERE esports_name LIKE ? LIMIT 10", [query + '%'], (err, results) => {
     if (err) {
       console.error("Error searching colleges:", err);
       return res.status(500).json({ error: "Database error" });
@@ -60,6 +66,9 @@ app.get("/api/colleges/search", (req, res) => {
     res.json(results);
   });
 });
+
+// Serve static files from the frontend folder (if desired)
+app.use(express.static(path.join(__dirname, "..", "frontend")));
 
 // Start the server
 app.listen(port, () => {

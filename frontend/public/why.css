@@ -138,36 +138,37 @@ header {
   }
 /* Navigation styles */
 nav {
-    margin-left: 40px;  /* Left space */
-    margin-right: 20px; /* Right space */
-    padding: 0.3rem 0;  /* Reduced vertical padding */
-  
-    ul {
-      display: flex;
-      align-items: center;
-      gap: 1rem;       /* Reduced gap if needed */
-      list-style: none;
-    }
-  }
-  
-  nav a {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgb(209, 213, 219);
-    text-decoration: none;
-    transition: color 0.2s;
-    padding: 0.3rem 0; /* Optional: reduce vertical padding in links */
-  }
-  
-  nav a:hover {
-    color: rgb(168, 85, 247);
-  }
-  
-  nav svg {
-    width: 1.125rem;
-    height: 1.125rem;
-  }
+  margin-left: 40px;   /* Left space */
+  margin-right: 20px;  /* Right space */
+  padding: 0.3rem 0;   /* Reduced vertical padding */
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 1rem;         /* Reduced gap if needed */
+  list-style: none;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgb(209, 213, 219);
+  text-decoration: none;
+  transition: color 0.2s;
+  padding: 0.3rem 0;   /* Optional: reduce vertical padding in links */
+}
+
+nav a:hover {
+  color: rgb(168, 85, 247);
+}
+
+nav svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
 
 /* Animations */
 @keyframes pulse {
@@ -196,6 +197,7 @@ nav {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.4);
+  margin-top: 2rem;
 }
 
 .hero-content {

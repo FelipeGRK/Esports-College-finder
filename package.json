@@ -8,12 +8,16 @@
     "dev": "nodemon server.js"
   },
   "dependencies": {
+    "@react-three/drei": "^9.56.2",
+    "@react-three/fiber": "^8.0.21",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "lucide-react": "^0.479.0",
     "mysql2": "^3.13.0",
-    "openai": "^4.86.2"
+    "node-geocoder": "^4.4.1",
+    "openai": "^4.86.2",
+    "three": "^0.152.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",

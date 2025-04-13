@@ -3,6 +3,8 @@ let allColleges = [];
 document.addEventListener("DOMContentLoaded", function () { 
   loadColleges();
   setupSearch();
+  initMap();
+  setupRegionSearchSidebar();
 });
 
 function loadColleges() {
@@ -22,13 +24,13 @@ function loadColleges() {
         gridContainer.innerHTML = "";
       }
 
-      // Sort data (ensure property name is correct)
+      // Sort the data (verify the property name is correct)
       data.sort((a, b) => a.colleges.localeCompare(b.colleges));
 
       data.forEach(college => {
         const collegeCard = createCollegeCard(college);
 
-        // Add to carousel container if it exists
+        // Add to carousel container (swiper)
         if (collegesList) {
           const slide = document.createElement("div");
           slide.classList.add("swiper-slide");
@@ -36,7 +38,7 @@ function loadColleges() {
           collegesList.appendChild(slide);
         }
 
-        // Add to grid container if it exists
+        // Add to grid, if it exists
         if (gridContainer) {
           const gridItem = document.createElement("div");
           gridItem.classList.add("grid-item");
@@ -45,7 +47,7 @@ function loadColleges() {
         }
       });
 
-      // Initialize Swiper carousel if container exists
+      // Initialize Swiper for the carousel, if it exists
       if (collegesList) {
         new Swiper('.swiper-container', {
           slidesPerView: 3,
@@ -109,13 +111,18 @@ function createCollegeCard(college) {
   `;
 }
 
+// 2. Function to render colleges in the #gridView container
 function displayCollegesInGrid(colleges) {
   const gridView = document.getElementById("gridView");
   if (!gridView) return;
 
+  // Clear existing content
   gridView.innerHTML = "";
+
+  // Sort if needed
   colleges.sort((a, b) => a.colleges.localeCompare(b.colleges));
 
+  // Create a card for each college
   colleges.forEach(college => {
     const cardHTML = createCollegeCard(college);
     const gridItem = document.createElement("div");
@@ -125,26 +132,36 @@ function displayCollegesInGrid(colleges) {
   });
 }
 
+// 3. Setup the search bar
 function setupSearch() {
   const searchInput = document.getElementById("searchInput");
   const searchBtn = document.getElementById("searchBtn");
 
-  searchInput.addEventListener("input", () => {
-    const query = searchInput.value.toLowerCase().trim();
-    filterAndDisplay(query);
-  });
+  if (searchInput) {
+    // Real-time filtering as user types
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase().trim();
+      filterAndDisplay(query);
+    });
+  }
 
-  searchBtn.addEventListener("click", () => {
-    const query = searchInput.value.toLowerCase().trim();
-    filterAndDisplay(query);
-  });
+  if (searchBtn) {
+    // Filter on button click
+    searchBtn.addEventListener("click", () => {
+      const query = searchInput.value.toLowerCase().trim();
+      filterAndDisplay(query);
+    });
+  }
 }
 
+// 4. Filter colleges by query and re-display
 function filterAndDisplay(query) {
   if (!query) {
+    // Show all if empty
     displayCollegesInGrid(allColleges);
     return;
   }
+  // Filter by college name, region, or esports (adjust fields as needed)
   const filtered = allColleges.filter(college => {
     return (
       college.colleges.toLowerCase().includes(query) ||
@@ -153,4 +170,4 @@ function filterAndDisplay(query) {
     );
   });
   displayCollegesInGrid(filtered);
-};
+}

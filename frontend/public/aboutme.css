@@ -26,6 +26,7 @@ html, body {
   padding: 0 2rem;
 }
 
+
 /* -----------------------------------------------------
    HEADER & NAVIGATION
 ------------------------------------------------------ */
@@ -684,6 +685,19 @@ nav svg {
   color: #6b7280;
   font-size: 0.875rem;
   text-align: center;
+}
+/* -------------------------
+   FOOTER
+-------------------------- */
+.footer {
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.footer-content p {
+  font-size: 0.875rem;
+  color: #9CA3AF;
 }
 
 /* -----------------------------------------------------

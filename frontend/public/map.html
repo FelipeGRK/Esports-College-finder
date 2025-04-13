@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" href="../public/default.png">
   <title>Esports College Finder - Map</title>
 
-  <!-- Main Site Styles (Optional) -->
+  <!-- Main Site Styles -->
   <link rel="stylesheet" href="../public/styles.css" />
 
   <!-- FontAwesome Icons -->
@@ -21,80 +21,10 @@
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-  <!-- Custom Script (for your site, e.g., script.js) -->
-  <script src="../script.js" defer></script>
-
-  <!-- Map-specific script -->
-  <script defer>
-    document.addEventListener("DOMContentLoaded", function () {
-      // 1. Initialize the map centered on the continental US
-      const map = L.map("map", {
-        minZoom: 3,
-        maxZoom: 19
-      }).setView([39.50, -98.35], 4);
-
-      // 2. Optionally restrict the map to the US bounding box
-      const southWest = L.latLng(24.396308, -125.0011);
-      const northEast = L.latLng(49.384358, -66.93457);
-      const bounds = L.latLngBounds(southWest, northEast);
-      map.setMaxBounds(bounds);
-      map.on("drag", () => {
-        map.panInsideBounds(bounds, { animate: false });
-      });
-
-      // 3. Add an OpenStreetMap tile layer
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-      }).addTo(map);
-
-      // 4. Fetch colleges from your local server
-      fetch("http://localhost:3000/api/colleges")
-        .then(response => response.json())
-        .then(data => {
-          data.forEach(college => {
-            // Ensure lat & lng exist
-            if (college.lat && college.lng) {
-              
-              // 4A. Build an icon for each college pin
-              // If your DB has a direct field for the logo URL, use that:
-              //   const iconUrl = college.logo_url;
-              // Or build from the college name as in createCollegeCard():
-              let sanitizedCollegeName = college.colleges.toLowerCase()
-                .replace(/[^a-z0-9_\s]/g, "")
-                .trim()
-                .replace(/\s+/g, "_");
-              const iconUrl = `./logos/${sanitizedCollegeName}.png`; // Example local file
-
-              const collegeIcon = L.icon({
-                iconUrl: iconUrl,
-                iconSize: [40, 40],       // pin size
-                iconAnchor: [20, 40],     // anchor so pin tip is at correct lat/lng
-                popupAnchor: [0, -40]
-              });
-
-              // 4B. Create marker
-              const marker = L.marker([college.lat, college.lng], {
-                icon: collegeIcon
-              }).addTo(map);
-
-              // 4C. Bind popup
-              marker.bindPopup(`
-                <div class="popup-content">
-                  <img src="${iconUrl}" alt="${college.colleges} Logo" class="popup-logo" />
-                  <strong>${college.colleges}</strong><br>
-                  ${college.location}<br>
-                  <a href="${college.website}" target="_blank" rel="noopener noreferrer">
-                    Visit Website
-                  </a>
-                </div>
-              `);
-            }
-          });
-        })
-        .catch(error => console.error("Error fetching colleges for map:", error));
-    });
-  </script>
+  <!-- Custom Script (contains all our JS logic) -->
+  <script src="../map.js" defer></script>
+  <script src="../script.js" defer ></script>
+<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 </head>
 <body>
   <!-- NAVIGATION HEADER -->
@@ -106,6 +36,7 @@
           <div class="logo-icon">
             <div class="icon-glow"></div>
             <div class="icon-container">
+              <!-- Your SVG icons here -->
               <svg class="gamepad" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                    stroke-linecap="round" stroke-linejoin="round">
@@ -156,34 +87,22 @@
 
   <!-- MAIN CONTENT: Map -->
   <main>
-    <h1 style="text-align:center; margin: 1rem 0; color: #fff;">US College Locations</h1>
-    <div id="map"></div>
+    <h1 class="page-title">US College Locations</h1>
+  
+    <div id="regionSearchContainer"></div>
+  
+    <div class="map-wrapper">
+      <div id="map"></div>
+    </div>
+  
+    <div id="collegeDetails" class="college-grid"></div>
   </main>
-
-  <footer>
-    <p>&copy; 2025 Esports College Finder. All rights reserved.</p>
+   <!-- ========== FOOTER ========== -->
+   <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2025 Esports Finder. All Rights Reserved.</p>
+    </div>
   </footer>
-
-  <!-- Chat widget script remains unchanged -->
-  <script type="text/javascript">
-    (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        if (!document.getElementById('root')) {
-          var root = d.createElement('div');
-          root.id = 'root';
-          d.body.appendChild(root);
-        }
-        if (window.myChatWidget && typeof window.myChatWidget.load === 'function') {
-          window.myChatWidget.load({
-            id: '73909685-288a-4cdd-a413-a5906fa94d84'
-          });
-        }
-      };
-      v.src = "https://agentivehub.com/production.bundle.min.js";
-      v.type = "text/javascript";
-      s.parentNode.insertBefore(v, s);
-    })(document, 'script');
-  </script>
 </body>
+</body> 
 </html>
